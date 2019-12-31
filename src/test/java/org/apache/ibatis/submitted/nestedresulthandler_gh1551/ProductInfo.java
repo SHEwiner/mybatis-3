@@ -13,22 +13,36 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.apache.ibatis.submitted.results_id;
+package org.apache.ibatis.submitted.nestedresulthandler_gh1551;
 
-import org.apache.ibatis.session.Configuration;
-import org.junit.jupiter.api.Test;
+public class ProductInfo {
 
-import static com.googlecode.catchexception.apis.BDDCatchException.*;
-import static org.assertj.core.api.BDDAssertions.then;
+  private Long id;
+  private String productId;
+  private String otherInfo;
 
-class IdConflictTest {
+  public Long getId() {
+    return id;
+  }
 
-  @Test
-  void shouldFailOnDuplicatedId() {
-    Configuration configuration = new Configuration();
-    when(() -> configuration.addMapper(IdConflictMapper.class));
-    then(caughtException()).isInstanceOf(RuntimeException.class)
-      .hasMessage("Result Maps collection already contains value for org.apache.ibatis.submitted.results_id.IdConflictMapper.userResult");
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getProductId() {
+    return productId;
+  }
+
+  public void setProductId(String productId) {
+    this.productId = productId;
+  }
+
+  public String getOtherInfo() {
+    return otherInfo;
+  }
+
+  public void setOtherInfo(String otherInfo) {
+    this.otherInfo = otherInfo;
   }
 
 }
